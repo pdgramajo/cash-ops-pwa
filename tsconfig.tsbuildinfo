@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./vite.config.ts"],"version":"5.6.3"}
+{"root":["./src/app.tsx","./src/approuter.tsx","./src/main.tsx","./src/contexts/themecontext.tsx","./src/db/index.ts","./src/hooks/usetranslation.ts","./src/i18n/index.ts","./src/layouts/applayout.tsx","./src/pages/receiptspage.tsx","./src/pages/reportspage.tsx","./src/pages/sessionpage.tsx","./src/pages/sessionspage.tsx","./src/types/database.ts","./src/utils/calculations.ts","./src/utils/formatters.ts","./src/utils/validators.ts","./vite.config.ts"],"version":"5.6.3"}
