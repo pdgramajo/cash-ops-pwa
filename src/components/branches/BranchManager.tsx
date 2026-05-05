@@ -1,0 +1,146 @@
+import { useState } from 'react';
+import { useBranches } from '../../hooks/useBranches';
+import { BranchForm } from './BranchForm';
+import { BranchList } from './BranchList';
+import type { Branch } from '../../types/database';
+
+interface BranchManagerProps {
+  onSuccess?: () => void;
+}
+
+export function BranchManager({ onSuccess }: BranchManagerProps) {
+  const { branches, loading, error, createBranch, updateBranch, deleteBranch, hasDuplicateName } = useBranches();
+  
+  const [dialogMode, setDialogMode] = useState<'list' | 'create' | 'edit' | 'delete'>('list');
+  const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
+  const [duplicateError, setDuplicateError] = useState<string | null>(null);
+
+  const handleCreate = async (name: string, address: string) => {
+    const isDuplicate = await hasDuplicateName(name);
+    if (isDuplicate) {
+      setDuplicateError('Ya existe una sucursal con ese nombre');
+      return;
+    }
+    setDuplicateError(null);
+    
+    const result = await createBranch(name, address);
+    if (result) {
+      setDialogMode('list');
+      onSuccess?.();
+    }
+  };
+
+  const handleEdit = async (name: string, address: string) => {
+    if (!selectedBranch) return;
+    
+    const isDuplicate = await hasDuplicateName(name, selectedBranch.id);
+    if (isDuplicate) {
+      setDuplicateError('Ya existe una sucursal con ese nombre');
+      return;
+    }
+    setDuplicateError(null);
+    
+    await updateBranch(selectedBranch.id!, name, address);
+    setDialogMode('list');
+    setSelectedBranch(null);
+    onSuccess?.();
+  };
+
+  const handleDelete = async () => {
+    if (!selectedBranch) return;
+    
+    await deleteBranch(selectedBranch.id!);
+    setDialogMode('list');
+    setSelectedBranch(null);
+    onSuccess?.();
+  };
+
+  const openEdit = (branch: Branch) => {
+    setSelectedBranch(branch);
+    setDialogMode('edit');
+    setDuplicateError(null);
+  };
+
+  const openDelete = (branch: Branch) => {
+    setSelectedBranch(branch);
+    setDialogMode('delete');
+  };
+
+  if (dialogMode === 'create') {
+    return (
+      <div className="border rounded-lg p-4">
+        <h2 className="text-lg font-semibold mb-4">Nueva Sucursal</h2>
+        <BranchForm
+          onSubmit={handleCreate}
+          onCancel={() => setDialogMode('list')}
+          submitLabel="Crear"
+        />
+        {duplicateError && <p className="text-red-500 mt-2">{duplicateError}</p>}
+      </div>
+    );
+  }
+
+  if (dialogMode === 'edit' && selectedBranch) {
+    return (
+      <div className="border rounded-lg p-4">
+        <h2 className="text-lg font-semibold mb-4">Editar Sucursal</h2>
+        <BranchForm
+          initialName={selectedBranch.name}
+          initialAddress={selectedBranch.address}
+          onSubmit={handleEdit}
+          onCancel={() => setDialogMode('list')}
+          submitLabel="Actualizar"
+        />
+        {duplicateError && <p className="text-red-500 mt-2">{duplicateError}</p>}
+      </div>
+    );
+  }
+
+  if (dialogMode === 'delete' && selectedBranch) {
+    return (
+      <div className="border rounded-lg p-4">
+        <h2 className="text-lg font-semibold mb-4">Confirmar Eliminación</h2>
+        <p className="mb-4">
+          ¿Eliminar la sucursal "<strong>{selectedBranch.name}</strong>"?
+        </p>
+        <div className="flex gap-2">
+          <button
+            onClick={handleDelete}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Eliminar
+          </button>
+          <button
+            onClick={() => setDialogMode('list')}
+            className="px-4 py-2 border rounded hover:bg-gray-50"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold">Sucursales</h2>
+        <button
+          onClick={() => setDialogMode('create')}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90"
+        >
+          Nueva Sucursal
+        </button>
+      </div>
+      
+      {error && <p className="text-red-500 mb-4">{error}</p>}
+      
+      <BranchList
+        branches={branches}
+        loading={loading}
+        onEdit={openEdit}
+        onDelete={openDelete}
+      />
+    </div>
+  );
+}
