@@ -1,0 +1,78 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Agregar",
+    "search": "Buscar",
+    "actions": "Acciones"
+  },
+  "nav": {
+    "sessions": "Sesiones",
+    "reports": "Reportes",
+    "receipts": "Recibos"
+  },
+  "session": {
+    "title": "Sesión de Caja",
+    "open": "Abrir Sesión",
+    "close": "Cerrar Sesión",
+    "openingBalance": "Saldo Inicial",
+    "closingBalance": "Saldo Final",
+    "expectedBalance": "Saldo Esperado",
+    "difference": "Diferencia",
+    "openedAt": "Apertura",
+    "closedAt": "Cierre",
+    "status": "Estado",
+    "openedBy": "Abierto Por",
+    "closedBy": "Cerrado Por"
+  },
+  "sessionStatus": {
+    "OPEN": "Abierta",
+    "CLOSED": "Cerrada",
+    "SETTLED": "Liquidada"
+  },
+  "transaction": {
+    "title": "Transacción",
+    "income": "Ingreso",
+    "expense": "Egreso",
+    "amount": "Monto",
+    "description": "Descripción",
+    "recipient": "Destinatario",
+    "reference": "Referencia",
+    "processedAt": "Fecha"
+  },
+  "report": {
+    "title": "Reporte",
+    "generate": "Generar Reporte",
+    "dailySummary": "Resumen Diario",
+    "sessionSummary": "Resumen de Sesión",
+    "inventoryReport": "Reporte de Inventario",
+    "transactionReport": "Reporte de Transacciones"
+  },
+  "receipt": {
+    "title": "Recibo",
+    "print": "Imprimir",
+    "download": "Descargar"
+  },
+  "branch": {
+    "title": "Sucursales",
+    "name": "Nombre",
+    "address": "Dirección",
+    "new": "Nueva Sucursal",
+    "edit": "Editar Sucursal",
+    "delete": "Eliminar Sucursal",
+    "confirmDelete": "Confirmar Eliminación",
+    "deleteMessage": "¿Eliminar la sucursal \"{{name}}\"?",
+    "active": "Activa",
+    "inactive": "Inactiva"
+  },
+  "validation": {
+    "required": "{{field}} es requerido",
+    "minLength": "{{field}} debe tener al menos {{min}} caracteres",
+    "duplicateName": "Ya existe una sucursal con ese nombre",
+    "noBranches": "No hay sucursales"
+  }
+}

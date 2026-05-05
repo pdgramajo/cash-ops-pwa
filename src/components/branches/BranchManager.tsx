@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useBranches } from '../../hooks/useBranches';
 import { BranchForm } from './BranchForm';
 import { BranchList } from './BranchList';
@@ -9,6 +10,7 @@ interface BranchManagerProps {
 }
 
 export function BranchManager({ onSuccess }: BranchManagerProps) {
+  const { t } = useTranslation();
   const { branches, loading, error, createBranch, updateBranch, deleteBranch, hasDuplicateName } = useBranches();
   
   const [dialogMode, setDialogMode] = useState<'list' | 'create' | 'edit' | 'delete'>('list');
@@ -18,7 +20,7 @@ export function BranchManager({ onSuccess }: BranchManagerProps) {
   const handleCreate = async (name: string, address: string) => {
     const isDuplicate = await hasDuplicateName(name);
     if (isDuplicate) {
-      setDuplicateError('Ya existe una sucursal con ese nombre');
+      setDuplicateError(t('validation.duplicateName'));
       return;
     }
     setDuplicateError(null);
@@ -35,7 +37,7 @@ export function BranchManager({ onSuccess }: BranchManagerProps) {
     
     const isDuplicate = await hasDuplicateName(name, selectedBranch.id);
     if (isDuplicate) {
-      setDuplicateError('Ya existe una sucursal con ese nombre');
+      setDuplicateError(t('validation.duplicateName'));
       return;
     }
     setDuplicateError(null);
@@ -69,11 +71,11 @@ export function BranchManager({ onSuccess }: BranchManagerProps) {
   if (dialogMode === 'create') {
     return (
       <div className="border rounded-lg p-4">
-        <h2 className="text-lg font-semibold mb-4">Nueva Sucursal</h2>
+        <h2 className="text-lg font-semibold mb-4">{t('branch.new')}</h2>
         <BranchForm
           onSubmit={handleCreate}
           onCancel={() => setDialogMode('list')}
-          submitLabel="Crear"
+          submitLabel={t('common.add')}
         />
         {duplicateError && <p className="text-red-500 mt-2">{duplicateError}</p>}
       </div>
@@ -83,13 +85,13 @@ export function BranchManager({ onSuccess }: BranchManagerProps) {
   if (dialogMode === 'edit' && selectedBranch) {
     return (
       <div className="border rounded-lg p-4">
-        <h2 className="text-lg font-semibold mb-4">Editar Sucursal</h2>
+        <h2 className="text-lg font-semibold mb-4">{t('branch.edit')}</h2>
         <BranchForm
           initialName={selectedBranch.name}
           initialAddress={selectedBranch.address}
           onSubmit={handleEdit}
           onCancel={() => setDialogMode('list')}
-          submitLabel="Actualizar"
+          submitLabel={t('common.save')}
         />
         {duplicateError && <p className="text-red-500 mt-2">{duplicateError}</p>}
       </div>
@@ -99,22 +101,22 @@ export function BranchManager({ onSuccess }: BranchManagerProps) {
   if (dialogMode === 'delete' && selectedBranch) {
     return (
       <div className="border rounded-lg p-4">
-        <h2 className="text-lg font-semibold mb-4">Confirmar Eliminación</h2>
+        <h2 className="text-lg font-semibold mb-4">{t('branch.confirmDelete')}</h2>
         <p className="mb-4">
-          ¿Eliminar la sucursal "<strong>{selectedBranch.name}</strong>"?
+          {t('branch.deleteMessage', { name: selectedBranch.name })}
         </p>
         <div className="flex gap-2">
           <button
             onClick={handleDelete}
             className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
           >
-            Eliminar
+            {t('common.delete')}
           </button>
           <button
             onClick={() => setDialogMode('list')}
             className="px-4 py-2 border rounded hover:bg-gray-50"
           >
-            Cancelar
+            {t('common.cancel')}
           </button>
         </div>
       </div>
@@ -124,12 +126,12 @@ export function BranchManager({ onSuccess }: BranchManagerProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Sucursales</h2>
+        <h2 className="text-lg font-semibold">{t('branch.title')}</h2>
         <button
           onClick={() => setDialogMode('create')}
           className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90"
         >
-          Nueva Sucursal
+          {t('branch.new')}
         </button>
       </div>
       

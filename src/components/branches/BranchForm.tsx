@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { isNotEmpty, minLength } from '../../utils/validators';
 
 interface BranchFormProps {
@@ -14,8 +15,9 @@ export function BranchForm({
   initialAddress = '',
   onSubmit,
   onCancel,
-  submitLabel = 'Guardar',
+  submitLabel,
 }: BranchFormProps) {
+  const { t } = useTranslation();
   const [name, setName] = useState(initialName);
   const [address, setAddress] = useState(initialAddress);
   const [errors, setErrors] = useState<{ name?: string; address?: string }>({});
@@ -25,13 +27,13 @@ export function BranchForm({
     const newErrors: { name?: string; address?: string } = {};
     
     if (!isNotEmpty(name)) {
-      newErrors.name = 'El nombre es requerido';
+      newErrors.name = t('validation.required', { field: t('branch.name') });
     } else if (!minLength(name, 2)) {
-      newErrors.name = 'El nombre debe tener al menos 2 caracteres';
+      newErrors.name = t('validation.minLength', { field: t('branch.name'), min: 2 });
     }
     
     if (!isNotEmpty(address)) {
-      newErrors.address = 'La dirección es requerida';
+      newErrors.address = t('validation.required', { field: t('branch.address') });
     }
     
     setErrors(newErrors);
@@ -53,7 +55,7 @@ export function BranchForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Nombre</label>
+        <label className="block text-sm font-medium mb-1">{t('branch.name')}</label>
         <input
           type="text"
           value={name}
@@ -64,7 +66,7 @@ export function BranchForm({
       </div>
       
       <div>
-        <label className="block text-sm font-medium mb-1">Dirección</label>
+        <label className="block text-sm font-medium mb-1">{t('branch.address')}</label>
         <input
           type="text"
           value={address}
@@ -80,14 +82,14 @@ export function BranchForm({
           disabled={submitting}
           className="px-4 py-2 bg-primary text-primary-foreground rounded hover:opacity-90 disabled:opacity-50"
         >
-          {submitting ? 'Guardando...' : submitLabel}
+          {submitting ? t('common.loading') : submitLabel || t('common.save')}
         </button>
         <button
           type="button"
           onClick={onCancel}
           className="px-4 py-2 border rounded hover:bg-gray-50"
         >
-          Cancelar
+          {t('common.cancel')}
         </button>
       </div>
     </form>
