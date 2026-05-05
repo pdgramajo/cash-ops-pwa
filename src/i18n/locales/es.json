@@ -15,9 +15,10 @@
     "reports": "Reportes",
     "receipts": "Recibos"
   },
-  "session": {
+"session": {
     "title": "Sesión de Caja",
-    "open": "Abrir Sesión",
+    "new": "Nueva Sesión",
+    "open": "Sesiones Abiertas",
     "close": "Cerrar Sesión",
     "openingBalance": "Saldo Inicial",
     "closingBalance": "Saldo Final",
@@ -27,7 +28,15 @@
     "closedAt": "Cierre",
     "status": "Estado",
     "openedBy": "Abierto Por",
-    "closedBy": "Cerrado Por"
+    "closedBy": "Cerrado Por",
+    "noOpenSessions": "No hay sesiones abiertas",
+    "noClosedSessions": "No hay sesiones cerradas"
+  },
+  "nav": {
+    "sessions": "Sesiones",
+    "reports": "Reportes",
+    "receipts": "Recibos",
+    "history": "Historial"
   },
   "sessionStatus": {
     "OPEN": "Abierta",
