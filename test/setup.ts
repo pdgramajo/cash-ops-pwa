@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom'
 import { beforeAll, afterEach, afterAll, vi } from 'vitest'
 import { cleanup } from '@testing-library/react'
-import createMockIndexedDB from 'fake-indexeddb'
+import 'fake-indexeddb/auto'
 
-beforeAll(() => {
-  globalThis.indexedDB = createMockIndexedDB() as unknown as IDBFactory
+beforeAll(async () => {
+  // fake-indexeddb/auto already sets up indexedDB globally
 })
 
 afterEach(() => {
