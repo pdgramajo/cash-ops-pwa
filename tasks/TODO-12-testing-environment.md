@@ -2,31 +2,26 @@
 
 ## Tasks
 
-### 12.1 Setup Testing Environment
-- [ ] Install Vitest
-- [ ] Install @testing-library/react
-- [ ] Install @testing-library/jest-dom
-- [ ] Install jsdom
-- [ ] Install @vitest/coverage-v8
-- [ ] Configure vitest.config.ts:
-  - Set environment: jsdom
-  - Set globals: true
-  - Configure coverage provider: v8
-  - Set coverage threshold: 80
-  - Add test match patterns
-- [ ] Create test setup file (tests/setup.ts):
-  - Setup jest-dom matchers
-  - Mock IndexedDB with fake-indexeddb
-  - Mock localStorage
-  - Mock window.matchMedia
+### 12.1 Verify Testing Dependencies (from TODO-01)
+- [ ] Verify Vitest is installed
+- [ ] Verify @testing-library/react is installed
+- [ ] Verify @testing-library/jest-dom is installed
+- [ ] Verify jsdom is installed
+- [ ] Verify @vitest/coverage-v8 is installed
+- [ ] Verify fake-indexeddb is installed
 
-## Status: IN_PROGRESS
+### 12.2 Configure Testing Environment (from TODO-01)
+- [ ] Verify vitest.config.ts exists
+- [ ] Verify test/setup.ts exists
+- [ ] Verify coverage threshold is set to 80%
+- [ ] Verify npm scripts: test, test:run, test:coverage
+
+### 12.3 Additional Testing Setup
+- [ ] Add test match patterns for .test.ts and .test.tsx
+- [ ] Configure coverage reports
+- [ ] Setup CI integration
 
 ## Dependencies
-- TODO-05-branches (complete)
-- TODO-06-sessions (complete)
-- TODO-07-transactions (complete)
-- TODO-08-inventory (complete)
-- TODO-09-reports (complete)
-- TODO-10-receipts (complete)
-- TODO-11-import-export (complete)
+- TODO-01-project-setup (complete)
+
+## Status: PENDING

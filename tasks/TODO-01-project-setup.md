@@ -26,6 +26,13 @@
 - [ ] Install jspdf for PDF generation
 - [ ] Install @types/uuid
 - [ ] Install i18next and react-i18next
+- [ ] Install testing dependencies:
+  - vitest (test runner)
+  - @testing-library/react (component testing)
+  - @testing-library/jest-dom (custom matchers)
+  - jsdom (DOM virtual)
+  - @vitest/coverage-v8 (code coverage)
+  - fake-indexeddb (mock IndexedDB for tests)
 
 ### 1.6 Configure Linting and Formatting
 - [ ] Install ESLint packages:
@@ -49,5 +56,11 @@
 - [ ] Create pre-commit hook (lint + tests)
 - [ ] Create commit-msg hook (conventional commits)
 - [ ] Configure package.json scripts
+
+### 1.8 Configure Testing Environment
+- [ ] Create vitest.config.ts
+- [ ] Create test/setup.ts
+- [ ] Configure coverage threshold to 80%
+- [ ] Add npm scripts: test, test:run, test:coverage
 
 ## Status: IN_PROGRESS
