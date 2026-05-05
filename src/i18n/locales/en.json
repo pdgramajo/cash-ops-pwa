@@ -56,5 +56,23 @@
     "title": "Receipt",
     "print": "Print",
     "download": "Download"
+  },
+  "branch": {
+    "title": "Branches",
+    "name": "Name",
+    "address": "Address",
+    "new": "New Branch",
+    "edit": "Edit Branch",
+    "delete": "Delete Branch",
+    "confirmDelete": "Confirm Deletion",
+    "deleteMessage": "Delete branch \"{{name}}\"?",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "validation": {
+    "required": "{{field}} is required",
+    "minLength": "{{field}} must be at least {{min}} characters",
+    "duplicateName": "A branch with that name already exists",
+    "noBranches": "No branches"
   }
 }

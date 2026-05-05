@@ -56,5 +56,23 @@
     "title": "Recibo",
     "print": "Imprimir",
     "download": "Descargar"
+  },
+  "branch": {
+    "title": "Sucursales",
+    "name": "Nombre",
+    "address": "Dirección",
+    "new": "Nueva Sucursal",
+    "edit": "Editar Sucursal",
+    "delete": "Eliminar Sucursal",
+    "confirmDelete": "Confirmar Eliminación",
+    "deleteMessage": "¿Eliminar la sucursal \"{{name}}\"?",
+    "active": "Activa",
+    "inactive": "Inactiva"
+  },
+  "validation": {
+    "required": "{{field}} es requerido",
+    "minLength": "{{field}} debe tener al menos {{min}} caracteres",
+    "duplicateName": "Ya existe una sucursal con ese nombre",
+    "noBranches": "No hay sucursales"
   }
 }
