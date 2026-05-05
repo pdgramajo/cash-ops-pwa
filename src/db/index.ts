@@ -56,3 +56,8 @@ export async function initializeDatabase(): Promise<void> {
 export async function closeDatabase(): Promise<void> {
   await db.close();
 }
+
+export async function deleteDatabase(): Promise<void> {
+  await db.delete();
+  await db.open();
+}
