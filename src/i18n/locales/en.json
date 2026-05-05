@@ -1,0 +1,60 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "actions": "Actions"
+  },
+  "nav": {
+    "sessions": "Sessions",
+    "reports": "Reports",
+    "receipts": "Receipts"
+  },
+  "session": {
+    "title": "Cash Session",
+    "open": "Open Session",
+    "close": "Close Session",
+    "openingBalance": "Opening Balance",
+    "closingBalance": "Closing Balance",
+    "expectedBalance": "Expected Balance",
+    "difference": "Difference",
+    "openedAt": "Opened At",
+    "closedAt": "Closed At",
+    "status": "Status",
+    "openedBy": "Opened By",
+    "closedBy": "Closed By"
+  },
+  "sessionStatus": {
+    "OPEN": "Open",
+    "CLOSED": "Closed",
+    "SETTLED": "Settled"
+  },
+  "transaction": {
+    "title": "Transaction",
+    "income": "Income",
+    "expense": "Expense",
+    "amount": "Amount",
+    "description": "Description",
+    "recipient": "Recipient",
+    "reference": "Reference",
+    "processedAt": "Date"
+  },
+  "report": {
+    "title": "Report",
+    "generate": "Generate Report",
+    "dailySummary": "Daily Summary",
+    "sessionSummary": "Session Summary",
+    "inventoryReport": "Inventory Report",
+    "transactionReport": "Transaction Report"
+  },
+  "receipt": {
+    "title": "Receipt",
+    "print": "Print",
+    "download": "Download"
+  }
+}
