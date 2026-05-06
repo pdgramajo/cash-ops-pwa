@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AppLayout } from './layouts/AppLayout';
 
 const SessionsPage = lazy(() => import('./pages/SessionsPage'));
 const SessionPage = lazy(() => import('./pages/SessionPage'));
@@ -20,11 +21,11 @@ export function AppRouter() {
     <BrowserRouter basename="/Cash-operations-app/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
-          <Route path="/" element={<SessionsPage />} />
-          <Route path="/session/:sessionId" element={<SessionPage />} />
-          <Route path="/reports" element={<ReportsPage />} />
-          <Route path="/receipts" element={<ReceiptsPage />} />
-          <Route path="/import-export" element={<ImportExportPage />} />
+          <Route path="/" element={<AppLayout><SessionsPage /></AppLayout>} />
+          <Route path="/session/:sessionId" element={<AppLayout><SessionPage /></AppLayout>} />
+          <Route path="/reports" element={<AppLayout><ReportsPage /></AppLayout>} />
+          <Route path="/receipts" element={<AppLayout><ReceiptsPage /></AppLayout>} />
+          <Route path="/import-export" element={<AppLayout><ImportExportPage /></AppLayout>} />
         </Routes>
       </Suspense>
     </BrowserRouter>
