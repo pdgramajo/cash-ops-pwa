@@ -125,5 +125,24 @@
     "minLength": "{{field}} debe tener al menos {{min}} caracteres",
     "duplicateName": "Ya existe una sucursal con ese nombre",
     "noBranches": "No hay sucursales"
+  },
+  "importExport": {
+    "title": "Importar / Exportar"
+  },
+  "export": {
+    "title": "Exportar Datos",
+    "all": "Exportar Todo",
+    "branches": "Sucursales",
+    "sessions": "Sesiones",
+    "transactions": "Transacciones",
+    "success": "Exportación exitosa",
+    "error": "Error al exportar"
+  },
+  "import": {
+    "title": "Importar Datos",
+    "success": "Importación exitosa",
+    "error": "Error al importar",
+    "records": "registros importados",
+    "hint": "Selecciona un archivo JSON exportado previamente"
   }
 }

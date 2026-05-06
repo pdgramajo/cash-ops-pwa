@@ -10,6 +10,7 @@ const navItems = [
   { path: '/', labelKey: 'nav.sessions' },
   { path: '/reports', labelKey: 'nav.reports' },
   { path: '/receipts', labelKey: 'nav.receipts' },
+  { path: '/import-export', labelKey: 'importExport.title' },
 ];
 
 export function AppLayout({ children }: AppLayoutProps) {
