@@ -13,7 +13,8 @@
   "nav": {
     "sessions": "Sesiones",
     "reports": "Reportes",
-    "receipts": "Recibos"
+    "receipts": "Recibos",
+    "history": "Historial"
   },
 "session": {
     "title": "Sesión de Caja",

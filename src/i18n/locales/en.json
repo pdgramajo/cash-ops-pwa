@@ -13,7 +13,8 @@
   "nav": {
     "sessions": "Sessions",
     "reports": "Reports",
-    "receipts": "Receipts"
+    "receipts": "Receipts",
+    "history": "History"
   },
   "session": {
     "title": "Cash Session",
@@ -40,9 +41,17 @@
     "expense": "Expense",
     "amount": "Amount",
     "description": "Description",
+    "descriptionPlaceholder": "Transaction description",
     "recipient": "Recipient",
     "reference": "Reference",
-    "processedAt": "Date"
+    "processedAt": "Date",
+    "sale": "Sale",
+    "withdrawal": "Withdrawal",
+    "cash": "Cash",
+    "transfer": "Transfer",
+    "quickAmounts": "Quick amounts",
+    "noTransactions": "No transactions",
+    "all": "All"
   },
   "report": {
     "title": "Report",
