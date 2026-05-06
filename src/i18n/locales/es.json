@@ -63,6 +63,25 @@
     "inventoryReport": "Reporte de Inventario",
     "transactionReport": "Reporte de Transacciones"
   },
+  "inventory": {
+    "title": "Inventario",
+    "incoming": "Entrada",
+    "outgoing": "Salida",
+    "transfer": "Transferencia",
+    "quantity": "Cantidad",
+    "unit": "Unidad",
+    "productCode": "Código",
+    "productName": "Producto",
+    "toBranch": "Sucursal Destino",
+    "selectBranch": "Seleccionar Sucursal",
+    "registerIncoming": "Registrar Entrada",
+    "registerOutgoing": "Registrar Salida",
+    "registerTransfer": "Registrar Transferencia",
+    "noMovements": "No hay movimientos",
+    "adjustment": "Ajuste",
+    "damaged": "Dañado",
+    "return": "Devolución"
+  },
   "receipt": {
     "title": "Recibo",
     "print": "Imprimir",
