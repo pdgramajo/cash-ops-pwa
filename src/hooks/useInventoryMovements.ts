@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import { inventoryMovementRepository } from '../repositories/inventoryMovementRepository';
 import type { InventoryMovement } from '../types/database';
+import { InventoryMovementType } from '../types/database';
 
 interface UseInventoryMovementsReturn {
   movements: InventoryMovement[];
@@ -23,8 +24,8 @@ export function useInventoryMovements(): UseInventoryMovementsReturn {
     let incoming = 0;
     let outgoing = 0;
     for (const m of movements) {
-      if (m.type === 'ENTRY') incoming += m.quantity;
-      else if (m.type === 'EXIT') outgoing += m.quantity;
+      if (m.type === InventoryMovementType.ENTRY) incoming += m.quantity;
+      else if (m.type === InventoryMovementType.EXIT) outgoing += m.quantity;
     }
     return { incoming, outgoing };
   }, [movements]);
