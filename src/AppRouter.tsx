@@ -16,7 +16,7 @@ function LoadingFallback() {
 
 export function AppRouter() {
   return (
-    <BrowserRouter basename="/Cash-operations-app/">
+    <BrowserRouter basename="/Cash-operations-app/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/" element={<SessionsPage />} />
