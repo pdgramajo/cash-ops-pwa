@@ -84,9 +84,29 @@
     "return": "Devolución"
   },
   "receipt": {
-    "title": "Recibo",
+    "title": "Recibos",
+    "new": "Nuevo Recibo",
     "print": "Imprimir",
-    "download": "Descargar"
+    "download": "Descargar",
+    "deliver": "Entregar",
+    "cancel": "Cancelar",
+    "cancelConfirm": "¿Cancelar este recibo?",
+    "number": "Número",
+    "recipient": "Destinatario",
+    "document": "Documento",
+    "amount": "Monto",
+    "status": "Estado",
+    "type": "Tipo",
+    "selectType": "Seleccionar Tipo",
+    "selectSession": "Seleccionar Sesión",
+    "createdAt": "Creado",
+    "noReceipts": "No hay recibos",
+    "status": {
+      "DRAFT": "Borrador",
+      "PRINTED": "Impreso",
+      "DELIVERED": "Entregado",
+      "CANCELLED": "Cancelado"
+    }
   },
   "branch": {
     "title": "Sucursales",

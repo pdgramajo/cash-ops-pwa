@@ -119,6 +119,30 @@ export interface ReceiptType {
   updatedAt: Date;
 }
 
+export enum ReceiptStatus {
+  DRAFT = 'DRAFT',
+  PRINTED = 'PRINTED',
+  DELIVERED = 'DELIVERED',
+  CANCELLED = 'CANCELLED',
+}
+
+export interface Receipt {
+  id?: number;
+  receiptNumber: string;
+  receiptTypeId: number;
+  sessionId: number;
+  branchId: number;
+  status: ReceiptStatus;
+  recipientName: string;
+  recipientDocument?: string;
+  amount: number;
+  description: string;
+  printedAt?: Date;
+  deliveredAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Report {
   id?: number;
   branchId: number;

@@ -5,6 +5,7 @@ import type {
   Transaction,
   InventoryMovement,
   ReceiptType,
+  Receipt,
   Report,
 } from '../types/database';
 
@@ -14,6 +15,7 @@ export class CashOperationsDB extends Dexie {
   transactions!: Table<Transaction, number>;
   inventoryMovements!: Table<InventoryMovement, number>;
   receiptTypes!: Table<ReceiptType, number>;
+  receipts!: Table<Receipt, number>;
   reports!: Table<Report, number>;
 
   constructor() {
@@ -33,6 +35,7 @@ export class CashOperationsDB extends Dexie {
       transactions: '++id, sessionId, branchId, type, subType, processedAt',
       inventoryMovements: '++id, branchId, sessionId, productCode, type, movementDate',
       receiptTypes: '++id, code, isActive',
+      receipts: '++id, receiptNumber, receiptTypeId, sessionId, branchId, status, createdAt',
       reports: '++id, branchId, type, generatedAt',
     }).upgrade(tx => {
       return tx.table('receiptTypes').add({
