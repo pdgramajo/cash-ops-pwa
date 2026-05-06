@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCashSessions } from '../../hooks/useCashSessions';
+import { useBranches } from '../../hooks/useBranches';
 import { SessionList } from './SessionList';
 import type { CashSession } from '../../types/database';
 
@@ -20,18 +21,22 @@ export function SessionManager({ onSessionSelect }: SessionManagerProps) {
     createSession,
     closeSession 
   } = useCashSessions();
+  const { branches } = useBranches();
   
   const [activeTab, setActiveTab] = useState<'open' | 'closed'>('open');
   const [showNewDialog, setShowNewDialog] = useState(false);
   const [showCloseDialog, setShowCloseDialog] = useState(false);
   const [selectedSession, setSelectedSession] = useState<CashSession | null>(null);
+  const [selectedBranchId, setSelectedBranchId] = useState<number>(0);
   const [openingBalance, setOpeningBalance] = useState('0');
   const [closingBalance, setClosingBalance] = useState('0');
 
   const handleCreateSession = async () => {
+    if (!selectedBranchId) return;
     const balance = parseFloat(openingBalance) || 0;
-    await createSession(1, balance, 'User'); // branchId = 1, user = User
+    await createSession(selectedBranchId, balance, 'User');
     setShowNewDialog(false);
+    setSelectedBranchId(0);
     setOpeningBalance('0');
   };
 
@@ -112,6 +117,23 @@ export function SessionManager({ onSessionSelect }: SessionManagerProps) {
             <h2 className="text-lg font-semibold mb-4">{t('session.new')}</h2>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-1">
+                {t('branch.title')}
+              </label>
+              <select
+                value={selectedBranchId}
+                onChange={(e) => setSelectedBranchId(Number(e.target.value))}
+                className="w-full border rounded px-3 py-2"
+              >
+                <option value={0}>-- {t('inventory.selectBranch')} --</option>
+                {branches.map((branch) => (
+                  <option key={branch.id} value={branch.id}>
+                    {branch.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">
                 {t('session.openingBalance')}
               </label>
               <input
@@ -124,7 +146,8 @@ export function SessionManager({ onSessionSelect }: SessionManagerProps) {
             <div className="flex gap-2">
               <button
                 onClick={handleCreateSession}
-                className="px-4 py-2 bg-primary text-white rounded hover:opacity-90"
+                disabled={!selectedBranchId}
+                className="px-4 py-2 bg-primary text-white rounded hover:opacity-90 disabled:opacity-50"
               >
                 {t('common.save')}
               </button>
