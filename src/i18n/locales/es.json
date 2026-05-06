@@ -17,7 +17,6 @@
   },
 "session": {
     "title": "Sesión de Caja",
-    "new": "Nueva Sesión",
     "open": "Sesiones Abiertas",
     "close": "Cerrar Sesión",
     "openingBalance": "Saldo Inicial",
@@ -30,13 +29,8 @@
     "openedBy": "Abierto Por",
     "closedBy": "Cerrado Por",
     "noOpenSessions": "No hay sesiones abiertas",
-    "noClosedSessions": "No hay sesiones cerradas"
-  },
-  "nav": {
-    "sessions": "Sesiones",
-    "reports": "Reportes",
-    "receipts": "Recibos",
-    "history": "Historial"
+    "noClosedSessions": "No hay sesiones cerradas",
+    "new": "Nueva Sesión"
   },
   "sessionStatus": {
     "OPEN": "Abierta",
@@ -49,9 +43,17 @@
     "expense": "Egreso",
     "amount": "Monto",
     "description": "Descripción",
+    "descriptionPlaceholder": "Descripción de la transacción",
     "recipient": "Destinatario",
     "reference": "Referencia",
-    "processedAt": "Fecha"
+    "processedAt": "Fecha",
+    "sale": "Venta",
+    "withdrawal": "Retiro",
+    "cash": "Efectivo",
+    "transfer": "Transferencia",
+    "quickAmounts": "Montos rápidos",
+    "noTransactions": "No hay transacciones",
+    "all": "Todas"
   },
   "report": {
     "title": "Reporte",
@@ -65,23 +67,5 @@
     "title": "Recibo",
     "print": "Imprimir",
     "download": "Descargar"
-  },
-  "branch": {
-    "title": "Sucursales",
-    "name": "Nombre",
-    "address": "Dirección",
-    "new": "Nueva Sucursal",
-    "edit": "Editar Sucursal",
-    "delete": "Eliminar Sucursal",
-    "confirmDelete": "Confirmar Eliminación",
-    "deleteMessage": "¿Eliminar la sucursal \"{{name}}\"?",
-    "active": "Activa",
-    "inactive": "Inactiva"
-  },
-  "validation": {
-    "required": "{{field}} es requerido",
-    "minLength": "{{field}} debe tener al menos {{min}} caracteres",
-    "duplicateName": "Ya existe una sucursal con ese nombre",
-    "noBranches": "No hay sucursales"
   }
 }
