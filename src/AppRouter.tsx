@@ -5,6 +5,7 @@ const SessionsPage = lazy(() => import('./pages/SessionsPage'));
 const SessionPage = lazy(() => import('./pages/SessionPage'));
 const ReportsPage = lazy(() => import('./pages/ReportsPage'));
 const ReceiptsPage = lazy(() => import('./pages/ReceiptsPage'));
+const ImportExportPage = lazy(() => import('./pages/ImportExportPage'));
 
 function LoadingFallback() {
   return (
@@ -23,6 +24,7 @@ export function AppRouter() {
           <Route path="/session/:sessionId" element={<SessionPage />} />
           <Route path="/reports" element={<ReportsPage />} />
           <Route path="/receipts" element={<ReceiptsPage />} />
+          <Route path="/import-export" element={<ImportExportPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
