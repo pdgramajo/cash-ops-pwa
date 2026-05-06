@@ -2,15 +2,17 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCashSessions } from '../hooks/useCashSessions';
+import { cashSessionRepository } from '../repositories/cashSessionRepository';
 import { TransactionManager } from '../components/transactions/TransactionManager';
 import { InventoryManager } from '../components/inventory/InventoryManager';
 import type { CashSession } from '../types/database';
 import { SessionStatus } from '../types/database';
+import { calculateSessionTotals } from '../utils/calculations';
 
 export default function SessionPage() {
   const { sessionId } = useParams<{ sessionId: string }>();
   const { t } = useTranslation();
-  const { openSessions, closedSessions, closeSession, calculateSessionTotals } = useCashSessions();
+  const { fetchOpenSessions, fetchClosedSessions, closeSession } = useCashSessions();
   
   const [session, setSession] = useState<CashSession | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,18 +29,20 @@ export default function SessionPage() {
     if (!sessionId) return;
     setLoading(true);
     try {
+      await fetchOpenSessions();
+      await fetchClosedSessions();
+      
       const id = parseInt(sessionId);
-      let found = openSessions.find(s => s.id === id);
-      if (!found) {
-        found = closedSessions.find(s => s.id === id);
-      }
-      if (found) {
-        setSession(found);
-        const calc = await calculateSessionTotals(found.id!);
+      const s = await cashSessionRepository.getById(id);
+      if (s) {
+        setSession(s);
+        const calc = await calculateSessionTotals(s.openingBalance, s.closingBalance || 0, []);
         if (calc) {
           setTotals({ totalIncome: calc.totalIncome, totalExpense: calc.totalExpense, difference: calc.difference });
         }
       }
+    } catch (e) {
+      console.error('Error loading session:', e);
     } finally {
       setLoading(false);
     }
